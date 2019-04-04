@@ -1,7 +1,14 @@
+process.env.NODE_ENV = 'test';
+
 const request = require('request');
 var expect = require('chai').expect
+const service = require('../server');
+const app = service.app;
+var server;
 
-describe("Ilovepets UnitTests", function() {
+describe("Ilovepets UnitTests", function(done) {
+
+  server = app.listen();
 
   describe("Home Page", function() {
     var url = "http://localhost:3000/";
@@ -11,6 +18,8 @@ describe("Ilovepets UnitTests", function() {
         expect(response.statusCode).to.equal(200);
       });
     });
+
+    
 
   });
 
@@ -35,6 +44,12 @@ describe("Ilovepets UnitTests", function() {
       });
     });
 
+  });
+
+  after(function(done) {
+    if (server) {
+      server.close(done);
+    }
   });
 
 
