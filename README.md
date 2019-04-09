@@ -8,6 +8,8 @@ $ npm install
 
 $ npm start
 
+Open your browser and access: http://localhost:8080/
+
 
 ## How to Dockerinize this App
 
@@ -19,3 +21,4 @@ $ docker images
 
 $ docker run -p 80:8080 <IMAGE-ID> 
 
+Open your browser and access: http://localhost/
