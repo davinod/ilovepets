@@ -1,56 +1,49 @@
+//During the test the env variable is set to test
 process.env.NODE_ENV = 'test';
 
-const request = require('request');
-var expect = require('chai').expect
-const service = require('../server');
-const app = service.app;
-var server;
+//Require the dev-dependencies
+let chai = require('chai');
+let chaiHttp = require('chai-http');
+let server = require('../server');
+let should = chai.should();
 
-describe("Ilovepets UnitTests", function(done) {
 
-  server = app.listen();
+chai.use(chaiHttp);
+//Our parent block
+describe('Ilovepets', () => {
 
-  describe("Home Page", function() {
-    var url = "http://localhost:3000/";
-
-    it("returns status 200", function() {
-      request(url, function(error, response, body) {
-        expect(response.statusCode).to.equal(200);
+  describe('/', () => {
+      it('Main Page', (done) => {
+        chai.request(server)
+            .get('/')
+            .end((err, res) => {
+                  res.should.have.status(200);
+              done();
+            });
       });
-    });
-
-    
-
   });
 
-  describe("Dogs Page", function() {
-    var url = "http://localhost:3000/dogs";
-
-    it("returns status 200", function() {
-      request(url, function(error, response, body) {
-        expect(response.statusCode).to.equal(200);
+    describe('/dogs', () => {
+      it('Dogs Page', (done) => {
+        chai.request(server)
+            .get('/dogs')
+            .end((err, res) => {
+                  res.should.have.status(200);
+              done();
+            });
       });
-    });
-
   });
 
-
-  describe("Cats Page", function() {
-    var url = "http://localhost:3000/cats";
-
-    it("returns status 200", function() {
-      request(url, function(error, response, body) {
-        expect(response.statusCode).to.equal(200);
+    describe('/cats', () => {
+      it('Cats Page', (done) => {
+        chai.request(server)
+            .get('/cats')
+            .end((err, res) => {
+                  res.should.have.status(200);
+              done();
+            });
       });
-    });
-
   });
-
-  after(function(done) {
-    if (server) {
-      server.close(done);
-    }
-  });
-
 
 });
+
