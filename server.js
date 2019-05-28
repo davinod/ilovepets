@@ -65,7 +65,7 @@ app.get('/', function (req, res) {
     const number =  Math.floor(Math.random() * (5 - 1) + 1)
 
     res.render('home', {
-        title: 'Ilovedogs - Adopt me',
+        title: 'Ilovepets - Adopt me',
         number: number
     });
 });
