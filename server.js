@@ -66,7 +66,8 @@ app.get('/', function (req, res) {
 
     res.render('home', {
         title: 'Ilovepets - Adopt me',
-  
+        number: number
+    });
 });
 
 app.get('/dogs', function (req, res) {
