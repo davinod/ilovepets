@@ -14,7 +14,7 @@
     "assert": "^1.4.1",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
-    "express": "^4.7.2",
+    "express": "^4.17.3",
     "express-handlebars": "^3.0.2",
     "http": "0.0.0",
     "js-yaml": "^3.13.1",
